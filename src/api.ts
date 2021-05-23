@@ -24,7 +24,7 @@ export const fetchQuiz = async (amount : number , difficulty:difficulty) =>{
     return data.results.map((question:Question)=>(
          {
             ...question,
-            answer:array([...question. incorrect_answers, question.correct_answer])
+            answers:array([...question.incorrect_answers, question.correct_answer])
          }   
     ))
 }
