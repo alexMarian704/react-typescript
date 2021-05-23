@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { fetchQuiz } from './api';
 import QuestionCard from './components/QuestionCars';
 import { QuestionState, difficulty } from './api'
+import { GlobalStyle , Wrapper } from './App.styles'
 
 const TOTAL = 10;
 
@@ -64,12 +65,15 @@ function App() {
   }
 
   return (
+    <>
+    <GlobalStyle />
+    <Wrapper>
     <div className="App">
       <h1>Quiz app</h1>
       {(gameOver === true || userAnswers.length === TOTAL) && <button className="start" onClick={startTrivia}>
         Start
       </button>}
-      {!gameOver ? <p className="score">Score:</p> : null}
+      {!gameOver ? <p className="score">Score: {score}</p> : null}
       {loading && <p>Loading..</p>}
       {(!loading && !gameOver) && <QuestionCard
         questionNr={number + 1}
@@ -83,6 +87,8 @@ function App() {
         <button className="next" onClick={nextQuestion}>Next</button>
       }
     </div>
+    </Wrapper>
+    </>
   );
 }
 
